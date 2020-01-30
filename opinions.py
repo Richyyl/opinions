@@ -14,7 +14,7 @@ def opinion_func():
 
     opinion = choice(opinions)
 
-    return opinion
+    return <h1>opinion</h1>
     
 if __name__ == '__main__':
     if 'PORT' in os.environ:
