@@ -1,20 +1,20 @@
 import os
 
-from flask import Flask, jsonify
+from flask import Flask
 
 from random import choice
 
 app = Flask(__name__)
 
 
-@app.route('/opinion', methods = ['get'])
-def get_param():
+@app.route('/opinion')
+def opinion_func():
     
     opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
 
     opinion = choice(opinions)
 
-    return jsonify(opinion)
+    return opinion
     
 if __name__ == '__main__':
     if 'PORT' in os.environ:
