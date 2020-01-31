@@ -8,10 +8,8 @@ app = Flask(__name__)
 
 opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
 
-@app.route('/add-opinion', methods = ['get'])
-def add_opinion(opinions = opinions):
-
-    opinion = request.args.get('opinion')
+@app.route('/add-opinion/<opinion>', methods = ['get'])
+def add_opinion(opinion, opinions = opinions):
 
     new_op = str(opinion).replace("_", " ")
 
@@ -31,9 +29,7 @@ def opinion_func(opinions = opinions):
 @app.route('/list-opinions')
 def list_opinions(opinions = opinions):
 
-    for op in opinions:
-
-        print(f"<h1>{op}</h1>")
+    print(f"<h1>{opinions}</h1>")
     
 if __name__ == '__main__':
     if 'PORT' in os.environ:
