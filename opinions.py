@@ -6,8 +6,6 @@ from random import choice
 
 app = Flask(__name__)
 
-opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
-
 @app.route('/add-opinion', methods = ['get'])
 def add_opinion(opinions):
 
@@ -28,6 +26,7 @@ def opinion_func(opinions):
     
 if __name__ == '__main__':
     if 'PORT' in os.environ:
+        opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
         app.run(host='0.0.0.0', port=int(os.environ['PORT']))
     else:
         app.run(debug=True)
