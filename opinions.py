@@ -1,16 +1,26 @@
 import os
 
-from flask import Flask
+from flask import Flask, request
 
 from random import choice
 
 app = Flask(__name__)
 
+opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
 
-@app.route('/opinion')
-def opinion_func():
+@app.route('/add-opinion', methods = ['get'])
+def add_opinion(opinions):
+
+    new_op = request.args.get('new_op')
+
+    new_op = str(new_op)
+
+    opinions = opinions.append(new_op)
+
+    return opinions
     
-    opinions = ["Looks good", "Ummm I'm not really sure", "Ask Tom", "That looks stupid", "I'd do it a different way", "Looks great!"]
+@app.route('/opinion')
+def opinion_func(opinions):
 
     opinion = choice(opinions)
 
