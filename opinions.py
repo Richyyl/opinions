@@ -29,9 +29,11 @@ def opinion_func(opinions = opinions):
 
 
 @app.route('/list-opinions')
-def opinion_func(opinions = opinions):
+def list_opinions(opinions = opinions):
 
-    return f"<h1>{opinion}</h1>"
+    for op in opinions:
+
+        print(f"<h1>{op}</h1>")
     
 if __name__ == '__main__':
     if 'PORT' in os.environ:
