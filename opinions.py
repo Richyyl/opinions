@@ -36,6 +36,21 @@ def opinion_func(opinions = opinions):
     return f'<h1 style = "text-align: center">{opinion}</h1>'
 
 
+@app.route('/remove-opinion', methods=['GET', 'POST'])
+def remove_opinion(opinions = opinions):
+
+    opinion = request.args.get('opinion')
+
+    rem_op = str(opinion).replace("_", " ")
+
+    if rem_op in opinions:
+        opinions.pop(rem_op)
+        return f'<h1 style = "text-align: center"> You have removed {rem_op}</h1>'
+
+    else:
+        return f'<h1 style = "text-align: center"> {rem_op} not found, please check your spelling</h1>'
+
+
 @app.route('/reset-opinions')
 def reset_opinions(opinions = opinions, new_opinions = new_opinions):
 
